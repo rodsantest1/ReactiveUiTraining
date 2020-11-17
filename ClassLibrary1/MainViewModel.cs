@@ -2,9 +2,7 @@
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Reactive.Linq;
-using System.Text;
 
 namespace ClassLibrary1.ViewModels
 {
