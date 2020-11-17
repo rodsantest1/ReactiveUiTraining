@@ -37,7 +37,7 @@ namespace ClassLibrary1.ViewModels
 
             return Observable.StartAsync(async () =>
             {
-                await System.Threading.Tasks.Task.Delay(3000); //Simulate work
+                //await System.Threading.Tasks.Task.Delay(3000); //Simulate work
 
                 return await this._buttonInteraction.Handle(arg);
             });
@@ -49,7 +49,7 @@ namespace ClassLibrary1.ViewModels
             //and then updates the spinner based on the status of the button
             this.WhenAnyObservable(x => x.FireButtonCommand.IsExecuting)
                 .Select(x => x == true ? this.SpinnerVisibility = "Visible" : this.SpinnerVisibility = "Hidden")
-                .ObserveOn(RxApp.MainThreadScheduler)
+                //.ObserveOn(RxApp.MainThreadScheduler)
                 //.Delay(TimeSpan.FromSeconds(3))
                 .Subscribe();
         }
