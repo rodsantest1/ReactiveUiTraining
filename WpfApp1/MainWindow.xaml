@@ -10,6 +10,7 @@
     <Grid>
         <StackPanel>
             <Button x:Name="BtnSave" Content="Save" Width="125" />
+            <TextBlock x:Name="Timer" Height="50" Width="200" Margin="50" Text="00" FontSize="20" TextAlignment="Center" />
             <TextBlock x:Name="Spinner" Text="Loading..." Margin="50" Visibility="Hidden" TextAlignment="Center"/>
         </StackPanel>
     </Grid>

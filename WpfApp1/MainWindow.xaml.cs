@@ -1,6 +1,8 @@
 ﻿using ClassLibrary1.ViewModels;
 using ReactiveUI;
+using System;
 using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Windows;
 
 namespace WpfApp1
@@ -28,16 +30,20 @@ namespace WpfApp1
                     v => v.BtnSave)
                 .DisposeWith(disposables);
 
+                this.OneWayBind(ViewModel,
+                    vm => vm.Time,
+                    v => v.Timer.Text)
+                .DisposeWith(disposables);
+
                 this.ViewModel.ButtonInteraction.RegisterHandler(interaction =>
                 {
-                    //Observable.Start(() => { })
-                    //.Delay(TimeSpan.FromSeconds(3))
-                    //.Subscribe(_ =>
-                    //{
-                    //    MessageBox.Show($"Message 1 {interaction.Input.Name}", "Title 1", MessageBoxButton.OK);
-                    //});
-
-                    MessageBox.Show($"Message 1 {interaction.Input.Name}", "Title 1", MessageBoxButton.OK);
+                    Observable.Start(() => { })
+                    //Observable.Timer(TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(4))
+                    .Delay(TimeSpan.FromSeconds(3))
+                    .Subscribe(_ =>
+                    {
+                        MessageBox.Show($"Message 1 {interaction.Input.Name}", "Title 1", MessageBoxButton.OK);
+                    });
 
                     interaction.SetOutput(interaction.Input.Name);
                 });
